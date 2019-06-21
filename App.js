@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Image, Button, Alert} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,12 +18,34 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  _onPressButton() {
+    Alert.alert('Bienvenido a Shared Music!')
+  }
+  _onLongPressButton() {
+    Alert.alert('Adios!')
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to Shared Music by NyxLeven!</Text>
+        <Text style={styles.welcome}>Shared Music by NyxLeven!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
+        <Image source={require('./img/andre.jpg')} style={{width: 293, height: 510}}/>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Acceder"
+            color="#841584"
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onLongPressButton}
+            title="Salir"
+            color="red"
+          />
+        </View>
       </View>
     );
   }
@@ -34,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FEFD6A',
   },
   welcome: {
     fontSize: 20,
@@ -46,4 +68,7 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  buttonContainer: {
+    margin: 20
+  }
 });
